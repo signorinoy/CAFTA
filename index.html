@@ -67,7 +67,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/signorinoy/CAFTA" class="external-link">CAFTA</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">formula</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Surv.html">Surv</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">status</span><span class="op">)</span> <span class="op">~</span> <span class="va">x1</span> <span class="op">+</span> <span class="va">x2</span> <span class="op">+</span> <span class="va">x31</span> <span class="op">+</span> <span class="va">x42</span> <span class="op">+</span> <span class="va">x43</span> <span class="op">+</span> <span class="va">x44</span></span>
-<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cafta.html">cafta</a></span><span class="op">(</span><span class="va">formula</span>, <span class="va">sim</span><span class="op">[</span><span class="va">sim</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span>, dist <span class="op">=</span> <span class="st">"weibull"</span><span class="op">)</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cafta.html">cafta</a></span><span class="op">(</span><span class="va">formula</span>, <span class="va">sim</span><span class="op">[</span><span class="va">sim</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span>, dist <span class="op">=</span> <span class="st">"weibull"</span>, robust <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">sim</span><span class="op">[</span><span class="va">sim</span><span class="op">$</span><span class="va">group</span> <span class="op">==</span> <span class="va">k</span>, <span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -77,14 +77,14 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
 <span><span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span><span class="co">#&gt; (Intercept)  0.32723    0.09943   3.291 0.000997 ***</span></span>
-<span><span class="co">#&gt; x1           0.20628    0.03153   6.541  6.1e-11 ***</span></span>
-<span><span class="co">#&gt; x2          -0.18711    0.03245  -5.766  8.1e-09 ***</span></span>
-<span><span class="co">#&gt; x31          0.13190    0.07638   1.727 0.084184 .  </span></span>
-<span><span class="co">#&gt; x42          0.19297    0.12076   1.598 0.110036    </span></span>
-<span><span class="co">#&gt; x43         -0.20334    0.10079  -2.018 0.043638 *  </span></span>
-<span><span class="co">#&gt; x44          0.39746    0.11215   3.544 0.000394 ***</span></span>
-<span><span class="co">#&gt; scale        0.76817    0.02553  30.086  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; (Intercept)  0.32723    0.10149   3.224 0.001263 ** </span></span>
+<span><span class="co">#&gt; x1           0.20628    0.03386   6.093 1.11e-09 ***</span></span>
+<span><span class="co">#&gt; x2          -0.18711    0.03472  -5.390 7.05e-08 ***</span></span>
+<span><span class="co">#&gt; x31          0.13190    0.07994   1.650 0.098929 .  </span></span>
+<span><span class="co">#&gt; x42          0.19297    0.12774   1.511 0.130880    </span></span>
+<span><span class="co">#&gt; x43         -0.20334    0.10630  -1.913 0.055766 .  </span></span>
+<span><span class="co">#&gt; x44          0.39746    0.11477   3.463 0.000534 ***</span></span>
+<span><span class="co">#&gt; scale        0.76817    0.02642  29.074  &lt; 2e-16 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 </div>
