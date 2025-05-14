@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# CAFTA
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/CAFTA)](https://CRAN.R-project.org/package=CAFTA)
+[![R-CMD-check](https://github.com/signorinoy/CAFTA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/signorinoy/CAFTA/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/signorinoy/CAFTA/graph/badge.svg)](https://app.codecov.io/gh/signorinoy/CAFTA)
+<!-- badges: end -->
+
+The goal of CAFTA is to ...
+
+## Installation
+
+You can install the development version of CAFTA like so:
+
+``` r
+# install.packages("pak")
+pak::pak("signorinoy/CAFTA")
+```
+
+## Example
+
+This is a basic example which shows you how to fit and update a model using CAFTA:
+
+```{r example}
+library(CAFTA)
+
+formula <- Surv(time, status) ~ x1 + x2 + x31 + x42 + x43 + x44
+fit <- cafta(formula, sim[sim$group == 1, ], dist = "weibull", robust = TRUE)
+for (k in 2:6) {
+  fit <- update(fit, sim[sim$group == k, ])
+}
+summary(fit)
+```
